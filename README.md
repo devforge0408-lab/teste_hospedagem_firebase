@@ -43,3 +43,5 @@ A cada `git push` no live branch, um novo deploy acontece automaticamente (Cloud
 ## 📺 Sobre o canal
 
 O **DevForge** ensina programação e criação de sites na prática: cada tutorial termina com um projeto real no ar. Inscreva-se e ative o sino!
+
+<img width="1920" height="4164" alt="image" src="https://github.com/user-attachments/assets/56b3b3f5-88b9-4b89-be7d-c353c16f9acd" />
