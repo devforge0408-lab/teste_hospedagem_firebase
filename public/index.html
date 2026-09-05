@@ -33,42 +33,60 @@
 
   <section class="section section-dark" id="tutorial">
     <h2>Como hospedar um site no Firebase App Hosting</h2>
-    <p class="lead">O <strong>Firebase App Hosting</strong> é a solução do Google para hospedar apps web full-stack (Next.js, Angular e backends Node). Siga os passos abaixo — é exatamente o que foi feito com esta landing page.</p>
+    <p class="lead">O <strong>Firebase App Hosting</strong> é a solução do Google para hospedar apps web full-stack (Next.js, Angular e backends Node). O fluxo recomendado é <strong>100% pelo Firebase Console integrado ao GitHub</strong> — sem precisar instalar CLI nenhuma. É exatamente assim que esta landing page foi para o ar.</p>
 
     <ol class="steps">
       <li>
-        <h3>1. Instale o Firebase CLI</h3>
-        <pre><code>npm install -g firebase-tools</code></pre>
+        <h3>1. Suba seu código para o GitHub</h3>
+        <p>Crie um repositório no GitHub e faça push do seu app. É o repositório que o Firebase vai observar — cada commit pode virar um deploy.</p>
+        <pre><code>git init
+git add -A
+git commit -m "meu site"
+git remote add origin https://github.com/SEU-USUARIO/SEU-REPO.git
+git push -u origin main</code></pre>
       </li>
       <li>
-        <h3>2. Faça login no Firebase</h3>
-        <pre><code>firebase login</code></pre>
+        <h3>2. Crie um projeto no Firebase Console</h3>
+        <p>Acesse o <em>Firebase Console</em>, clique em <em>"Adicionar projeto"</em> e crie um projeto. Certifique-se de que ele esteja no plano <strong>Blaze</strong> (pague apenas pelo que usar — necessário porque o App Hosting usa Cloud Run e Cloud Build).</p>
       </li>
       <li>
-        <h3>3. Crie um projeto no Console do Firebase</h3>
-        <p>Acesse o <em>Firebase Console</em>, crie um projeto e ative o <strong>App Hosting</strong> (requer plano Blaze — pague apenas pelo que usar).</p>
+        <h3>3. Abra o App Hosting</h3>
+        <p>No menu lateral do console, vá em <em>Build &gt; Hosting &amp; Serverless &gt; App Hosting</em> e clique em <strong>"Get started"</strong> (Começar).</p>
       </li>
       <li>
-        <h3>4. Conecte seu repositório GitHub</h3>
-        <p>No console do App Hosting, clique em <em>"Get started"</em>, conecte sua conta do GitHub e selecione o repositório do seu site.</p>
+        <h3>4. Conecte o GitHub</h3>
+        <p>O assistente usa o <strong>Developer Connect</strong> do Google Cloud: ele pede para instalar e autorizar o <em>app do Firebase no GitHub</em> na sua conta/organização. Autorize o acesso e selecione o repositório do seu site. Nenhum comando de terminal é necessário.</p>
       </li>
       <li>
         <h3>5. Configure o backend</h3>
-        <p>Defina o nome do backend, a região (ex.: <code>us-central1</code>) e o branch de deploy (ex.: <code>main</code>). O App Hosting detecta o framework e o comando de start automaticamente — para Node puro, ele usa <code>npm start</code>.</p>
+        <p>Ainda no assistente, defina:</p>
+        <ul class="config-list">
+          <li><strong>Região primária</strong> — ex.: <code>us-central1</code>, <code>europe-west4</code> ou <code>asia-east1</code>;</li>
+          <li><strong>Diretório raiz do app</strong> — deixe <code>/</code> se o código está na raiz do repo;</li>
+          <li><strong>Live branch</strong> — o branch que vai para produção (ex.: <code>main</code>);</li>
+          <li><strong>Rollouts automáticos</strong> — deixe ativado para deploy a cada push;</li>
+          <li><strong>Nome do backend</strong> e o <strong>runtime Node.js</strong> (o mais recente já vem pré-selecionado).</li>
+        </ul>
       </li>
       <li>
-        <h3>6. Deploy automático</h3>
-        <p>A cada <code>git push</code> no branch configurado, o App Hosting faz build e deploy automaticamente via Cloud Build + Cloud Run, com CDN, SSL e rollbacks inclusos.</p>
+        <h3>6. "Finish and deploy"</h3>
+        <p>Crie um <em>Firebase web app</em> quando solicitado e clique em <strong>Finish and deploy</strong>. O App Hosting gera uma URL gratuita no formato <code>backend-id--project-id.us-central1.hosted.app</code> já com HTTPS.</p>
       </li>
       <li>
-        <h3>7. (Opcional) Domínio personalizado</h3>
+        <h3>7. Deploy contínuo via push</h3>
+        <p>Pronto! A cada <code>git push</code> no live branch, o Developer Connect dispara um evento, o <strong>Cloud Build</strong> faz o build, o <strong>Cloud Run</strong> sobe a nova versão e o <strong>Cloud CDN</strong> serve o conteúdo. Você acompanha o status do rollout pelo console do Firebase ou direto no commit do GitHub (via checks API).</p>
+      </li>
+      <li>
+        <h3>8. (Opcional) Domínio personalizado</h3>
         <p>Na aba de domínios do App Hosting, adicione seu domínio e configure os registros DNS indicados. O certificado SSL é provisionado automaticamente.</p>
       </li>
     </ol>
 
     <div class="tip">
-      <strong>💡 Dica:</strong> garanta que seu <code>package.json</code> tenha o script <code>"start"</code> e que o servidor escute em <code>process.env.PORT</code> — é assim que o App Hosting sabe como rodar seu app.
+      <strong>💡 Dica:</strong> garanta que seu <code>package.json</code> tenha o script <code>"start"</code> e que o servidor escute em <code>process.env.PORT</code> — é assim que o App Hosting sabe como rodar seu app. Para customizações avançadas, você pode adicionar um <code>apphosting.yaml</code> na raiz do repositório.
     </div>
+
+    <p class="note">📎 <em>Nota:</em> existe a opção de deploy via Firebase CLI ou upload de zip direto pelo console, mas o fluxo recomendado — e o que ensinamos no canal — é a integração contínua com o GitHub.</p>
   </section>
 
   <section class="section">
