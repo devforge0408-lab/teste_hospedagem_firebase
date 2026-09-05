@@ -1,10 +1,10 @@
 :root {
-  --bg: #0d1117;
-  --bg-alt: #161b22;
-  --fg: #e6edf3;
-  --muted: #9da7b3;
-  --accent: #ff6d2d;
-  --accent-2: #ffa657;
+  --bg: #ffffff;
+  --bg-alt: #f6f8fa;
+  --fg: #1f2328;
+  --muted: #59636e;
+  --accent: #e04e12;
+  --accent-2: #f0802d;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +20,7 @@ body {
   min-height: 80vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #0d1117 0%, #1a1207 60%, #2d1503 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fff3e6 60%, #ffe0c2 100%);
 }
 
 .nav {
@@ -80,7 +80,7 @@ body {
 }
 .card {
   background: var(--bg-alt);
-  border: 1px solid #2d333b;
+  border: 1px solid #d1d9e0;
   border-radius: 12px;
   padding: 1.5rem;
 }
@@ -106,8 +106,8 @@ body {
 .note { margin-top: 1.5rem; color: var(--muted); }
 
 pre {
-  background: #010409;
-  border: 1px solid #2d333b;
+  background: #f6f8fa;
+  border: 1px solid #d1d9e0;
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
@@ -118,7 +118,7 @@ code { font-family: "Cascadia Code", Consolas, monospace; color: var(--accent-2)
 .tip {
   margin-top: 2rem;
   padding: 1rem 1.25rem;
-  background: #2d1503;
+  background: #ffe9d6;
   border: 1px solid var(--accent);
   border-radius: 8px;
 }
@@ -128,7 +128,7 @@ code { font-family: "Cascadia Code", Consolas, monospace; color: var(--accent-2)
 .footer {
   text-align: center;
   padding: 3rem 5%;
-  background: #010409;
+  background: #eaeef2;
   color: var(--muted);
 }
 .footer p + p { margin-top: 0.5rem; }
