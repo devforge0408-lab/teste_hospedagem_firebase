@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevForge — Aprenda a hospedar seu site no Firebase App Hosting</title>
+  <meta name="description" content="DevForge: canal de programação e criação de sites. Aprenda passo a passo como hospedar um site Node.js no Firebase App Hosting." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <span class="logo">⚒️ DevForge</span>
+      <a href="#tutorial" class="btn btn-outline">Ver tutorial</a>
+    </nav>
+    <div class="hero-content">
+      <h1>DevForge</h1>
+      <p class="tagline">Forjando devs: programação e criação de sites do zero ao deploy.</p>
+      <p class="subtitle">Neste tutorial você vai aprender a hospedar um site <strong>Node.js</strong> no <strong>Firebase App Hosting</strong> — exatamente como esta página que você está vendo agora.</p>
+      <a href="#tutorial" class="btn btn-primary">Começar agora</a>
+    </div>
+  </header>
+
+  <section class="section" id="sobre">
+    <h2>Sobre o canal</h2>
+    <p>O <strong>DevForge</strong> é um canal dedicado a ensinar programação e criação de sites na prática. Nada de teoria sem aplicação: cada vídeo termina com um projeto real no ar.</p>
+    <div class="cards">
+      <div class="card"><h3>💻 Programação</h3><p>JavaScript, Node.js e fundamentos de desenvolvimento web.</p></div>
+      <div class="card"><h3>🌐 Criação de sites</h3><p>Do HTML ao deploy, com projetos completos e modernos.</p></div>
+      <div class="card"><h3>🚀 Deploy real</h3><p>Hospedagem, CI/CD e boas práticas de produção.</p></div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="tutorial">
+    <h2>Como hospedar um site no Firebase App Hosting</h2>
+    <p class="lead">O <strong>Firebase App Hosting</strong> é a solução do Google para hospedar apps web full-stack (Next.js, Angular e backends Node). Siga os passos abaixo — é exatamente o que foi feito com esta landing page.</p>
+
+    <ol class="steps">
+      <li>
+        <h3>1. Instale o Firebase CLI</h3>
+        <pre><code>npm install -g firebase-tools</code></pre>
+      </li>
+      <li>
+        <h3>2. Faça login no Firebase</h3>
+        <pre><code>firebase login</code></pre>
+      </li>
+      <li>
+        <h3>3. Crie um projeto no Console do Firebase</h3>
+        <p>Acesse o <em>Firebase Console</em>, crie um projeto e ative o <strong>App Hosting</strong> (requer plano Blaze — pague apenas pelo que usar).</p>
+      </li>
+      <li>
+        <h3>4. Conecte seu repositório GitHub</h3>
+        <p>No console do App Hosting, clique em <em>"Get started"</em>, conecte sua conta do GitHub e selecione o repositório do seu site.</p>
+      </li>
+      <li>
+        <h3>5. Configure o backend</h3>
+        <p>Defina o nome do backend, a região (ex.: <code>us-central1</code>) e o branch de deploy (ex.: <code>main</code>). O App Hosting detecta o framework e o comando de start automaticamente — para Node puro, ele usa <code>npm start</code>.</p>
+      </li>
+      <li>
+        <h3>6. Deploy automático</h3>
+        <p>A cada <code>git push</code> no branch configurado, o App Hosting faz build e deploy automaticamente via Cloud Build + Cloud Run, com CDN, SSL e rollbacks inclusos.</p>
+      </li>
+      <li>
+        <h3>7. (Opcional) Domínio personalizado</h3>
+        <p>Na aba de domínios do App Hosting, adicione seu domínio e configure os registros DNS indicados. O certificado SSL é provisionado automaticamente.</p>
+      </li>
+    </ol>
+
+    <div class="tip">
+      <strong>💡 Dica:</strong> garanta que seu <code>package.json</code> tenha o script <code>"start"</code> e que o servidor escute em <code>process.env.PORT</code> — é assim que o App Hosting sabe como rodar seu app.
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Estrutura deste projeto</h2>
+    <pre class="tree"><code>devforge-landing/
+├── server.js        # Servidor HTTP em Node puro
+├── package.json     # Script "start" para o App Hosting
+└── public/
+    ├── index.html   # Esta landing page
+    └── style.css    # Estilos</code></pre>
+  </section>
+
+  <footer class="footer">
+    <p>⚒️ <strong>DevForge</strong> — forjando devs, um deploy por vez.</p>
+    <p>Inscreva-se no canal e ative o sino para não perder os próximos tutoriais.</p>
+  </footer>
+</body>
+</html>

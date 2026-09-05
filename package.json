@@ -1,0 +1,22 @@
+{
+  "name": "devforge-landing",
+  "version": "1.0.0",
+  "description": "Landing page do canal DevForge - tutorial de hospedagem no Firebase App Hosting",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "devforge",
+    "firebase",
+    "app-hosting",
+    "landing-page",
+    "node"
+  ],
+  "author": "DevForge",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
